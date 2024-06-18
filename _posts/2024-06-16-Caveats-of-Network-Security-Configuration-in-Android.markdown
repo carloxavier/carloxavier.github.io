@@ -76,7 +76,7 @@ It makes it much harder for an attacker to perform a successful Man-in-the-Middl
 
 ### Common examples on how to use it:
 
-1. How to Configure Custom CA signed Certificates in Debug:
+1. How to Configure Custom CA signed Certificates for Debug builds, to include also debug certificate authorities:
 
 ```xml
 <network-security-config>
@@ -89,11 +89,11 @@ It makes it much harder for an attacker to perform a successful Man-in-the-Middl
 </network-security-config>
 ```
 
-This configuration allows your app to trust those self signed certificates which may be used in pre-production environments, only in debug builds, making it easier to enable your development environments.
+This configuration allows your app to trust those self signed certificates which may be used in pre-production environments only in debug builds, making it easier to enable your development environments.
 
 2. Certificate Pinning:
 
-```XML
+```xml
 <network-security-config>
     <domain-config>
         <domain includeSubdomains="true">yourserver.com</domain>
@@ -104,7 +104,7 @@ This configuration allows your app to trust those self signed certificates which
 </network-security-config>
 ```
 
-This pins your app to a specific certificate, preventing it from trusting potentially malicious certificates presented by attackers attempting Man-in-the-Middle (MitM) attacks.
+This pins your app to a specific certificate for release builds, preventing it from trusting potentially malicious certificates presented by attackers attempting Man-in-the-Middle (MitM) attacks.
 
 ### Benefits of Using NSC (vs. Direct Configuration):
 
